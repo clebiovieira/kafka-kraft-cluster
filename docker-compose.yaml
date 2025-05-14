@@ -23,7 +23,6 @@ services:
     command: [ "sh", "-c", "/kafka/entrypoint.sh" ]
     networks:
       - kafka-net
-
   kafka-2:
     image: apache/kafka:3.7.0
     hostname: kafka-2
@@ -48,7 +47,6 @@ services:
     command: [ "sh",  "-c", "/kafka/entrypoint.sh" ]
     networks:
       - kafka-net
-
   kafka-3:
     image: apache/kafka:3.7.0
     hostname: kafka-3
@@ -73,7 +71,20 @@ services:
     command: [ "sh",  "-c", "/kafka/entrypoint.sh" ]
     networks:
       - kafka-net
-
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    container_name: kafka-ui
+    ports:
+      - "8080:8080"
+    environment:
+      - KAFKA_CLUSTERS_0_NAME=kraft-cluster
+      - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka-1:29092,kafka-2:29092,kafka-3:29092
+    depends_on:
+      - kafka-1
+      - kafka-2
+      - kafka-3
+    networks:
+      - kafka-net
 networks:
   kafka-net:
     driver: bridge

@@ -1,1 +1,4 @@
 .DS_Store
+/kafka-1/data/*
+/kafka-2/data/*
+/kafka-3/data/*
