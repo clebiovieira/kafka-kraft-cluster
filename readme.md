@@ -1,4 +1,4 @@
-## **3. Execution Commands**
+## **1. Execution Commands**
 
 ### **Generate Cluster Id**
 ```bash
