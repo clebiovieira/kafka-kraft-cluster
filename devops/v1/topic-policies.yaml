@@ -1,0 +1,17 @@
+# topic-policies.yaml
+topicPolicies:
+  even--more-complex--topic--with--double--dashes-1:
+    partitions: 10
+    replicas: 3
+    configs:
+      cleanup.policy: "compact"
+      retention.ms: 259200000
+  payments:
+    configs:
+      cleanup.policy: "delete"
+      retention.ms: 604800000
+  audit:
+    configs:
+      cleanup.policy: "compact,delete"
+      retention.ms: -1
+
